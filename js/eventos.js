@@ -37,7 +37,7 @@ function cargarTablaProductos() {
     })
 }
 
-// cargarTablaProductos()
+cargarTablaProductos()
 
 function buscarProducto() {
     // debugger
