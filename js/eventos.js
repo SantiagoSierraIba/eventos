@@ -1,6 +1,7 @@
-const productos = [] 
+const productos = []
 const campos = document.querySelectorAll("input")
 const btnCargar = document.querySelector(".btn .btn-dark")
+const cuerpo = document.getElementById("cuerpo")
 
 class Producto {
     constructor(id, nombre, precio) {
@@ -39,25 +40,30 @@ function cargarTablaProductos() {
 
 function buscarProducto() {
     // debugger
-    const codigoBuscado=document.getElementById("codigo").value
-    // let codigoBuscado=5
-    const cuerpo = document.getElementById("cuerpo")
-
-    for (let i=0;i<productos.length;i++){
-        if (codigoBuscado==i){
-            cuerpo.innerHTML +=     `<tr>
-                                        <td>${productos[i-1].id}</td>
-                                        <td>${productos[i-1].nombre}</td>
-                                        <td>${productos[i-1].precio}</td>
+    const codigoBuscado = document.getElementById("codigo").value
+    if (codigoBuscado < 1 || codigoBuscado > 10 || codigoBuscado == null) {
+        cuerpo.innerHTML = `<tr>
+                                    <td>No existe ese producto</td>
+                                    <td>No existe ese producto</td>
+                                    <td>No existe ese producto</td>
+                                </tr>`
+    } else {
+        for (let i = 0; i <= productos.length; i++) {
+            if (codigoBuscado == i) {
+                cuerpo.innerHTML = `<tr>
+                                        <td>${productos[i - 1].id}</td>
+                                        <td>${productos[i - 1].nombre}</td>
+                                        <td>${productos[i - 1].precio}</td>
                                     </tr>`
+            }
         }
     }
 }
 
 function mostrarProducto() {
     campos.forEach(campo => {
-        campo.addEventListener("keypress", (e)=> {
-            if(e.key=="Enter"){
+        campo.addEventListener("keypress", (e) => {
+            if (e.key == "Enter") {
                 buscarProducto()
             }
         })
@@ -69,10 +75,10 @@ mostrarProducto()
 
 function focoEnCampos() {
     campos.forEach(campo => {
-        campo.addEventListener("focus", ()=> {campo.className = "form-control-lg"})
-        campo.addEventListener("blur", ()=> {campo.className = "form-control"})
+        campo.addEventListener("focus", () => { campo.className = "form-control-lg" })
+        campo.addEventListener("blur", () => { campo.className = "form-control" })
     })
 }
 
-// focoEnCampos()
+focoEnCampos()
 
