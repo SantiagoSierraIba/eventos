@@ -3,6 +3,7 @@ const campos = document.querySelectorAll("input")
 const btnCargar = document.querySelector(".btn .btn-dark")
 const cuerpo = document.getElementById("cuerpo")
 
+
 class Producto {
     constructor(id, nombre, precio) {
         this.id = id
@@ -65,6 +66,7 @@ function mostrarProducto() {
         campo.addEventListener("keypress", (e) => {
             if (e.key == "Enter") {
                 buscarProducto()
+                document.getElementById("codigo").value=""
             }
         })
     })
